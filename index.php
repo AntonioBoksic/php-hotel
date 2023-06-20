@@ -1,7 +1,7 @@
 <?php
 echo "hello";
 
-$hotels = [
+    $hotels = [
 
     
         [
@@ -42,4 +42,6 @@ $hotels = [
 
     ];
 
-    ?>
+    var_dump($hotels)
+
+?>
