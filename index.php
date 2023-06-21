@@ -14,7 +14,6 @@
 <body class=container>
     <!-- salvo i dati in php -->
     <?php
-
         $hotels = [
 
             [
@@ -55,7 +54,25 @@
 
         ];
 
+        // mi salvo input dell'utente del parcheggio
+        $parking = $_GET["parking"];
+        var_dump($parking);
+
+
     ?>
+
+    <!-- creo form -->
+    <form>
+        <!-- parcheggio -->
+        <label for="Parcheggio">Parcheggio</label>
+        <input type="radio" id="parking_yes" name="parking" value="yes">
+        <label for="parking_yes">Yes</label>
+        <input type="radio" id="parking_no" name="parking" value="no">
+        <label for="parking_no">No</label>
+
+        <input type="submit" value="SEARCH">
+
+    </form>
 
     <!-- creo tabella -->
     <table border=1px>
@@ -68,28 +85,30 @@
         </tr>
         <?php
         
-
             foreach ($hotels as $hotel) {
-                echo "<tr>";
-                echo "<td>" . $hotel["name"] . " " . "</td>";
-                echo "<td>" . $hotel["description"] . " " . "</td>";
-                echo "<td>" . ($hotel['parking'] ? 'yes' : 'no') . " " . "</td>";
-                echo "<td>" . $hotel["vote"] . " " . "</td>";
-                echo "<td>" . $hotel["distance_to_center"] . " " . "</td>";
-                echo "<tr>";
-            }
-            ;
+                if ($parking === null 
+                || ($parking === "yes" && $hotel['parking'])
+                || ($parking === "no" && !$hotel['parking'])
+                 
+                ) {
+                    echo "<tr>";
+                    echo "<td>" . $hotel["name"] . " " . "</td>";
+                    echo "<td>" . $hotel["description"] . " " . "</td>";
+                    echo "<td>" . ($hotel['parking'] ? "yes" : 'no') . " " . "</td>";
+                    echo "<td>" . $hotel["vote"] . " " . "</td>";
+                    echo "<td>" . $hotel["distance_to_center"] . " " . "</td>";
+                    echo "<tr>";
+
+                }
+               
+            };
         ?>
-
     </table>
-
-   
 
     <?php
     // var_dump($hotels);
     ?>
 
-        
 </body>
 </html>
 
