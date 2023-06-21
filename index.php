@@ -1,27 +1,22 @@
-   <!DOCTYPE html>
-   <html lang="en">
-   <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>php-hotel</title>
-    <!-- cdn Bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>php-hotel</title>
+<!-- cdn Bootstrap -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">;
 
-   </head>
-        <body>
 
-            
-        </body>
-   </html>
+</head>
 
+<body class=container>
+    <!-- salvo i dati in php -->
     <?php
-
-        echo "hello";
 
         $hotels = [
 
-        
             [
                 'name' => 'Hotel Belvedere',
                 'description' => 'Hotel Belvedere Descrizione',
@@ -60,16 +55,44 @@
 
         ];
 
-        var_dump($hotels);
-
-        echo "<ul>";
-            foreach ($hotels as $hotel) {
-                echo "<li>" . 
-                $hotel["name"] . " " .
-                "</li>";
-
-                
-            }
-
-        echo "</ul>" ;
     ?>
+
+    <!-- creo tabella -->
+    <table border=1px>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Parking</th>
+            <th>Vote</th>
+            <th>Distance_To_Center</th>
+        </tr>
+        <?php
+        
+
+            foreach ($hotels as $hotel) {
+                echo "<tr>";
+                echo "<td>" . $hotel["name"] . " " . "</td>";
+                echo "<td>" . $hotel["description"] . " " . "</td>";
+                echo "<td>" . ($hotel['parking'] ? 'yes' : 'no') . " " . "</td>";
+                echo "<td>" . $hotel["vote"] . " " . "</td>";
+                echo "<td>" . $hotel["distance_to_center"] . " " . "</td>";
+                echo "<tr>";
+            }
+            ;
+        ?>
+
+    </table>
+
+   
+
+    <?php
+    // var_dump($hotels);
+    ?>
+
+        
+</body>
+</html>
+
+
+
+   
